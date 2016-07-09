@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="OrangeButton.Button" parent="@android:style/Widget.Button">
+        <item name="android:background">@drawable/orange_button</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Dialog_Transparent" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="AppTheme.PreferenceTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/actionbar</item>
+        <item name="colorPrimaryDark">@color/actionbar_dark</item>
+        <item name="colorAccent">@color/actionbar</item>
+    </style>
+
+    <style name="AppTheme.PlayerTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/actionbar</item>
+        <item name="colorPrimaryDark">@color/actionbar_dark</item>
+        <item name="colorAccent">@color/actionbar</item>
+        <item name="colorControlNormal">@color/actionbar</item>
+        <item name="actionModeStyle">@style/AppTheme.ActionMode</item>
+        <item name="android:activatedBackgroundIndicator">@drawable/selector_white_orange_selected
+        </item>
+        <item name="android:spinnerItemStyle">@style/AppTheme.SpinnerItem</item>
+        <item name="android:spinnerDropDownItemStyle">@style/AppTheme.SpinnerDropDownItem</item>
+        <item name="android:autoCompleteTextViewStyle">@style/AppTheme.AutoCompleteTextView</item>
+        <item name="windowActionModeOverlay">true</item>
+    </style>
+
+    <style name="AppTheme.AutoCompleteTextView" parent="@android:style/Widget.Holo.Light.AutoCompleteTextView">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textColorHint">@android:color/white</item>
+        <item name="android:textCursorDrawable">@null</item>
+    </style>
+
+    <style name="AppTheme.SpinnerItem" parent="@style/Widget.AppCompat.TextView.SpinnerItem">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="AppTheme.SpinnerDropDownItem" parent="@style/Widget.AppCompat.DropDownItem.Spinner">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="AppTheme.ActionMode" parent="Widget.AppCompat.ActionMode">
+        <item name="background">@color/grey_cab</item>
+        <item name="backgroundSplit">@color/grey_cab_status</item>
+    </style>
+
+    <style name="ShowcaseView.Title" parent="android:style/TextAppearance.Large">
+        <item name="android:textColor">@color/orange_light</item>
+    </style>
+
+    <style name="ShowcaseView.Detail" parent="android:style/TextAppearance">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="ContentListView">
+        <item name="android:clipToPadding">false</item>
+        <item name="android:scrollbarStyle">outsideOverlay</item>
+    </style>
+</resources>

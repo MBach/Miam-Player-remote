@@ -1,0 +1,102 @@
+apply plugin: 'com.android.application'
+
+dependencies {
+    compile 'com.android.support:support-v13:24.0.0'
+    compile 'com.android.support:appcompat-v7:24.0.0'
+    compile 'com.google.protobuf:protobuf-java:2.5.0'
+    compile 'javax.jmdns:jmdns:3.4.1'
+    compile 'com.twofortyfouram:android-plugin-api-for-locale:1.0.1'
+    compile('com.github.afollestad.material-dialogs:core:0.8.5.3@aar') {
+        transitive = true
+    }
+    compile('com.github.afollestad.material-dialogs:commons:0.8.5.3@aar') {
+        transitive = true
+    }
+}
+
+/*
+ * Gets the version name from the latest Git tag
+ */
+def getVersionName = { ->
+    def stdout = new ByteArrayOutputStream()
+    exec {
+        commandLine 'git', 'describe', '--tags'
+        standardOutput = stdout
+    }
+    return stdout.toString().trim()
+}
+def getVersionCode = { ->
+    def stdout = new ByteArrayOutputStream()
+    exec {
+        commandLine 'git', 'rev-list', '--count', "HEAD"
+        standardOutput = stdout
+    }
+    return Integer.valueOf(stdout.toString().trim())
+}
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode getVersionCode()
+        versionName getVersionName()
+    }
+
+    signingConfigs {
+        release {
+            // Signing code for buildbot
+            def keyProperties = file("key.properties")
+            if (keyProperties.exists()) {
+                Properties props = new Properties()
+                props.load(new FileInputStream(keyProperties))
+                storeFile file(props['keystore'])
+                storePassword props['keystore.password']
+                keyAlias props['key.alias']
+                keyPassword props['key.password']
+            }
+
+            // Signing code for manual signing
+            //storeFile file(System.console().readLine("\n\$ Enter keystore path: "))
+            //storePassword System.console().readPassword("\n\$ Enter keystore password: ").toString()
+            //keyAlias System.console().readLine("\n\$ Enter key alias: ")
+            //keyPassword System.console().readPassword("\n\$ Enter key password: ").toString()
+        }
+    }
+
+    buildTypes {
+        release {
+            if (signingConfigs.release.keyAlias != null) {
+                signingConfig signingConfigs.release
+            }
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    if (output.outputFile != null && output.outputFile.name.endsWith('.apk')) {
+                        def file = output.outputFile
+                        if (variant.name == "release")
+                            output.outputFile = new File(file.parent,
+                                    "MiamPlayerRemote-release-" + defaultConfig.versionName +
+                                            ".apk")
+                    }
+                }
+            }
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    lintOptions {
+        disable 'MissingQuantity'
+    }
+}
+
+task generateProtocolBuffer << {
+    exec {
+        commandLine 'protoc', '-I./', '--java_out=./src/main/java', './src/main/java/org/miamplayer/miamplayerremote/backend/pb/remotecontrolmessages.proto'
+    }
+}

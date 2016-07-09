@@ -1,0 +1,264 @@
+Version 11
+  Features:
+    - Complete design overhaul, using Material Design
+    - Add global search
+    - rtl language support
+  Improvements:
+    - Download every song in your library, long click and select download
+    - Clicking on finished downloads open a file chooser which song to play back
+    - Sorting and grouping library is possible now
+    - Show download speed and total file size in download view
+    - Stop playback
+    - Show transcoding status (MiamPlayer can transcode lossless file before the download. Check MiamPlayer settings)
+    - Add tabs in player view for easier navigation
+    - Option to pause playback on incoming calls
+  Bugfixes:
+    - Fix timeout when downloading library
+    - Fix crash in download settings when clicking "Set download folder"
+    - Fix volume reset when receiving a call
+  Other:
+    - Build against API 23 Marshmallow
+    - Use latest buildtools
+    - Remove ShowcaseView
+    - Add gradle task for protocol buffer generation
+
+Version 10.1
+  Bugfixes:
+    - Fix NullPointerException when trying to connect
+    - Fix NullPointerException in SongDownloader
+    - Fix SQLiteExceptions when library download was not successful
+    - Fix NumberFormatException in tasker settings when port or auth code was empty
+    - Fix IllegalStateException: setSelectedNavigationIndex in playlist view
+    - Fix NullPointerException when canceling connect dialog
+    - Fix IllegalStateException in settings
+    - Fix IndexOutOfBoundsException in playlist view
+    - Fix jmdns race condition (java.lang.IllegalStateException: Timer was canceled)
+    - Added workaround for crash in showcaseview
+
+Version 10
+  Features:
+    - Tasker & Locale support
+    - 4x1 Widget for homescreen
+    - Clear playlist
+    - Close playlist
+  Improvements:
+    - Huge performance increase especially when connecting and retrieving playlist songs
+    - Download notifications are now stacked when downloading multiple items
+    - Delete multiple items from playlist
+    - Improve phone and tablet layout
+    - Don't show -1 track / disc number in song details
+    - Last.fm doesn't require a restart
+  Bugfixes:
+    - Fix volume slider joggs
+    - Playlist updates correctly when it's changed (on Remote or Desktop)
+    - Android 4.4: Downloads are now saved in apps music dir since apps cannot write outside them in KITKAT.
+      Note: Those files are deleted when uninstalling MiamPlayer Remote. You may have to reset the download path.
+  Other:
+    - App don't aquire wakelock by default anymore. Can still be activated in the settings if connection is unsable
+    - Compiled against Android 5.0 Lollipop + Lockscreen notifications
+    - Remove Pebble specific code and use metachanged intent for all bluetooth devices
+
+Version 9 (Only for Android 4.0+)
+  Features:
+    - Showcases to introduce app features
+  Improvements:
+    - Flat orange ActionBar
+    - Tablet layout
+    - Minor layout improvements overall
+    - Song detail page moved from navigation to player view (swipe to right)
+    - New view "Connection details" in player view (swipe to right twice)
+    - Reworked playlist handling, should be more stable now
+    - The search function in the library performs a full search now, not only artist, album and title
+    - Show transferred bytes when downloading the library
+    - Preference to keep the screen on while connected
+    - Volume increase / decrease level can now be changed
+    - Playlist and Library have holo context menus now
+    - MiamPlayer Remote saves recent connected ip addresses
+  Bugfixes:
+    - IP address can hold more than 20 characters now
+    - Fix NumberFormatException in settings when entering invalid port
+    - Fix crash when downloading songs
+    - Fix adding songs to playlist from library that had special characters in it
+    - Fix fast scrolling: It was disabled when selecting another the playlist
+
+Version 8.5
+  Improvements:
+    - Library: Search applies for artist, album and title now
+    - Show proper error message when library loading fails
+    - Database integrity check for all andorid versions
+  Bugfixes:
+    - Fix crash on start
+    - Fix crash when downloaded library is corrupted
+    - Fix crash in download view
+    - Fix disappearing playlist view on tablets.
+
+Version 8.4
+  Bugfixes:
+    - Call isDatabaseIntegrityOk only when available
+    - Fix crash in Playlist (again)
+
+Version 8.3
+  Bugfixes:
+    - Fixed crash on tablets.
+    - Fix crash in playlist.
+
+Version 8.2
+  Improvements:
+    - Updated project URL to new GitHub repository
+    - Updated polish translation
+  Bugfixes:
+    - Fix notificaion was not opening app on KITKAT
+    - Fix crash when searching on empty library
+    - Fix crash on tablets when returning to player from another menu
+    - Fix rare crash when connecting to MiamPlayer
+    - Fix crash in playlists
+    - Check if multicast lock is held before releasing it.
+    - Fix crash in donate menu on devices without google apps. 
+
+Version 8.1
+  Bugfixes:
+    - Fix orientation change when downloading library.
+    - Fix illigalStateExeption when commiting fragment. 
+    - Cancel download if we got an IO error when parsing protocol buffer.
+    - Fix crash when using back button on empty library. 
+    - Fix nullpointer when destroying service.
+    - Delete unavailable songs. Fixes issue 31.
+    - Fix nullpointer when we got invalid data.
+    - Fix database leak in library fragment when disconnecting.
+
+Version 8
+  Features:
+    - Huge design rework, using navigation drawer on the left!
+    - Library browsing added
+    - Download list
+    - Rate songs
+    - Added song information section
+    - Added donate section
+  Improvements:
+    - PlayPause, Next Button in notification (expand to see them)
+    - Remove songs from playlist
+    - Add songs from library
+    - New icons
+    - Downloads are not canceled anymore when clicking the download notification
+    - Open last downloaded song with music player
+    - Show [s] when listening to a internet stream
+    - Ability to quit the app directly instead of disconnecting first
+    - Added animation when changing menu
+    - Various performance improvements
+    - Added XXHDPI icon resolution
+    - Compiled against Android 4.4 KITKAT
+  Bugfixes:
+    - Fix crash when downloading songs on Android 4.4
+    - Fix crash in settings dialog
+    - Fix trackupdate when listening to internetradio
+
+Version 7.1
+  Improvements:
+    - Update media library after download
+  Bugfixes:
+    - Fixed Nullpointer crash when trying to download a song (no song)
+    - Fixed Nullpointer crash when connecting to MiamPlayer
+
+Version 7
+  Features:
+    - Display lyrics when clicking albumcover
+    - Download current song, album or playlist to your device
+  Improvements:
+    - Improved settings dialog
+    - Toggle stop after current track (hold pause)
+    - Build against api level 18 (android 4.3)
+    - Show cursor in ip text field
+    - Added crash reporting function
+  Bugfixes:
+    - Fixed two crashes when displaying a dialog
+    - Fix a nullpointer issue when connecting to MiamPlayer
+    - Fix FC when opening urls in restricted profiles
+    - Fix a FC when exiting playlist view
+
+Version 6.2
+  Bugfixes:
+    - Fix a nullpointer when receiving a call
+    - Fix a nullpointer when connecting to MiamPlayer
+  Translations:
+    - Added dutch translation
+
+Version 6.1
+  Bugfixes:
+    - Fix crash on devices < 3.0 when opening settings
+
+Version 6
+  Features:
+    - Last.fm: Love and ban tracks
+    - Lower volume on calls
+  Improvements:
+    - New Icons
+    - Playlist is now accessible with pressing the playlist name
+    - Removed beep sound when changing volume
+    - Tracknumber in playlist can be hidden in settings
+    - Show a welcome dialog on first run
+    - Improved "no connection" errormessage
+    - New settings layout
+    - Actionbar now in Connectdialog
+  Bugfixes:
+    - Fixed a FC when using Pebble
+    - Fixed a FC when connecting to MiamPlayer
+
+Version 0.5
+  Features:
+    - New layout for tables
+    - Improved layout for handsets
+    - Show and set the track position
+  Improvements:
+    - show the track-nr. in playlist
+    - Landscape layout
+  
+
+Version 0.4.1
+  Bugfix: Fix errormessage "old version" was not shown.
+
+Version 0.4
+  Features:
+    - mDNS discovery
+    - Search Playlists
+  Improvements:
+    - Enable fastscroll in playlist view
+    - Show the current track on playlist view
+    - Improved stability
+  Bugfixes:
+    - Fix FC when starting MiamPlayer Remote
+    - Display Artist on Lockscreen (Android 4.0+)
+  Translations:
+    - Added Spanish, French, Portuguese and Burmese language 
+
+Version 0.3
+  Features:
+    - Android 2.2 support
+    - Playlist support
+    - Set repeat and shuffle Modes
+    - ActionBar for all Android versions
+    - Media Widgets or bluetooth devices can control MiamPlayer like 
+      every other media player
+    - Added Lockscreen-Controls for Android 4.0+
+  Improvements:
+    - Scale cover to full size (Thanks Evan)
+    - Show keyboard in number mode on connect dialog (Thanks Evan)
+    - Show the current playlist in the ActionBar
+    - Show cover art in notification (Android 4.0+)
+  Bugfixes:
+    - Fix the notification force closes
+  Translations:
+    - Added german translation
+
+Version 0.2:
+  Features:
+    - Added authentication code support
+    - Current track position is now displayed
+    - Improved disconnect handling
+    - Added Notifications
+  Bugfix:
+    - Ip was eventually overlayed by the keyboard.
+    - ActionBar is now shown on Android 3.0 and above
+    - Moved Thread to Service to increase stability
+
+Version 0.1:
+  - Initial release
