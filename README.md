@@ -46,4 +46,3 @@ __PERMISSIONS:__
 * android.permission.WAKE_LOCK: The device is in partial wake mode when connect to increase stability.
 * android.permission.READ_PHONE_STATE: Is needed to detect calls and lower MiamPlayer volume.
 * android.permission.WRITE_EXTERNAL_STORAGE: For downloading songs.
-* com.android.vending.BILLING: Is needed for doing donations.
